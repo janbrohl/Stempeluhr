@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stempeluhr: {uhr}</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.4/semantic.min.css" 
+    integrity="sha256-BQwSEeLxuDggfePeFdo3V906rcvcJpkSAYr/Lqc2oSo= sha384-p71KKL7vBOSqUKqLFuMUQU3g3EEk0tZnCzjpiAvCs+1121eqCSz7WWuPAAL8RNDT"
+    crossorigin="anonymous" />
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.4/semantic.min.js" 
+    integrity="sha256-BlYXc67JeIFZfxjseL6XCBWFi7MwxKoUEF6rPIzHmBM= sha384-LlbDgC9iZdaw/h+lbnk6Q98yDLMuFeMNwVN18DU77RcJRHdmljv2C37l2KmGv/Yk"
+    crossorigin="anonymous"></script>
+  <style>
+    .Anfang {{
+        background-color: #eeeeff;
+      }}
+    
+    .Ende {{
+        background-color: #ffeeee;
+      }}
+  </style>
+
+  <body>
+    <div class="ui container">
+      <h1 class="ui header">Stempeluhr: {uhr}</h1>
+      <h2 class="ui header">Stempeln für {login}</h2>
+
+      <form method="POST" action="." class="ui form">
+        <input type="hidden" name="form_check" value="{form_check}" />
+        <div class="field">
+          <label for="bemerkung">Bemerkung</label>
+          <input name="bemerkung" type="text" id="bemerkung" />
+        </div>
+        <div class="ui three buttons">
+          <button type="submit" name="stempel" value="Anfang" class="ui blue button">Anfang</button>
+
+          <button type="submit" name="stempel" value="Ende" class="ui red button">Ende</button>
+          <button type="submit" name="stempel" value="Extra" class="ui gray button">Extra</button>
+        </div>
+      </form>
+      <div class="ui divider"></div>
+      <h2 class="ui header">Einträge</h2>
+      <p><small>Exportieren als <a href="/export.csv" >CSV</a> oder <a href="/export.tsv" >TSV</a></small></p>
+      <table class="ui celled table">
+        <thead>
+          <tr>
+            <td>UTC</td>
+            <td>Stempel</td>
+            <td>Stempeluhr</td>
+            <td>Bemerkung</td>
+          </tr>
+        </thead>
+        <tbody>
+          {tbody}
+        </tbody>
+      </table>
+    </div>
+  </body>
+
+</html>
